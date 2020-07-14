@@ -11,7 +11,7 @@ export const useTasks = selectedProject => {
     let unsubscribe = firebase
     .firestore()
     .collection('tasks')
-    .where('userId', "==", "69")
+    .where('userId', '==', '69');
 
     unsubscribe =
       selectedProject && !collatedTasksExist(selectedProject) 
@@ -55,20 +55,21 @@ export const useTasks = selectedProject => {
 
   return { tasks, archivedTasks };
 };
-export const userProjects = () => {
+export const useProjects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    firebase.firestore()
-    .collection('projects')
-    .where('userId', '==', '69')
-    .orderBy('projectId')
-    .get()
-    .then(snapshot => {
-      const allProjects = snapshot.docs.map(project => ({
-        ...project.data(),
-        docId: project.id, 
-      }));
+    firebase
+      .firestore()
+      .collection('projects')
+      .where('userId', '==', '69')
+      .orderBy('projectId')
+      .get()
+      .then(snapshot => {
+        const allProjects = snapshot.docs.map(project => ({
+          ...project.data(),
+          docId: project.id, 
+        }));
 
       if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
         setProjects(allProjects);
