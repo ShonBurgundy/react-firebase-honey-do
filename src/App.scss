@@ -157,7 +157,7 @@ header {
     grid-row-gap: 0px;
     max-width: 922px;
     margin: auto;
-    height: 44px;
+    height: 44x;
   }
   
   p, li {
@@ -170,7 +170,7 @@ header {
       grid-area: 1 / 1;
 
       img {
-        width: 24px;
+        width: 48px;
       }
 
     }
@@ -232,6 +232,7 @@ header {
 }
 
 // ---------- SIDEBAR ----------
+
 .sidebar {
   @include no-select();
   width: 266px;
